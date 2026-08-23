@@ -1,4 +1,4 @@
-const CACHE='mental-os-v7';
+const CACHE='mental-os-v8';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./scribble-crumple.js','./manifest.webmanifest'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
@@ -9,8 +9,8 @@ self.addEventListener('activate',e=>e.waitUntil((async()=>{
   for(const client of clients){
     try{
       const u=new URL(client.url);
-      if(u.origin===self.location.origin && !u.searchParams.has('__mental_v7')){
-        u.searchParams.set('__mental_v7','1');
+      if(u.origin===self.location.origin && !u.searchParams.has('__mental_v8')){
+        u.searchParams.set('__mental_v8','1');
         client.navigate(u.toString());
       }
     }catch{}
