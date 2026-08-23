@@ -12,235 +12,77 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div>
-        <p class="eyebrow">PERSONAL MENTAL OS</p>
-        <h1 id="pageTitle">いまの自分を、ちょっと整える。</h1>
-      </div>
+      <div><p class="eyebrow">PERSONAL MENTAL OS</p><h1 id="pageTitle">いまの自分を、ちょっと整える。</h1></div>
       <button class="icon-button" id="quickExit" aria-label="クイック退出">⌂</button>
     </header>
-
     <main id="app">
       <section class="page active" data-page="home">
         <article class="hero card">
-          <p class="small muted">診断じゃなくて、今の状態に合う選択を探す場所。</p>
-          <h2>今、どんな感じ？</h2>
-
+          <p class="small muted">診断じゃなくて、今の状態に合う選択を探す場所。</p><h2>今、どんな感じ？</h2>
           <div class="mood-grid" id="moodGrid">
-            <button data-mood="good">😊<span>元気</span></button>
-            <button data-mood="sad">😢<span>悲しい</span></button>
-            <button data-mood="anxious">😰<span>不安</span></button>
-            <button data-mood="angry">😡<span>イライラ</span></button>
-            <button data-mood="tired">😴<span>疲れた</span></button>
-            <button data-mood="foggy">😶<span>よく分からない</span></button>
+            <button data-mood="good">😊<span>元気</span></button><button data-mood="sad">😢<span>悲しい</span></button><button data-mood="anxious">😰<span>不安</span></button><button data-mood="angry">😡<span>イライラ</span></button><button data-mood="tired">😴<span>疲れた</span></button><button data-mood="foggy">😶<span>よく分からない</span></button>
           </div>
-
-          <div class="range-row">
-            <label>ストレス <strong id="stressValue">50</strong></label>
-            <input id="stressRange" type="range" min="0" max="100" value="50" />
-          </div>
-          <div class="range-row">
-            <label>エネルギー <strong id="energyValue">50</strong></label>
-            <input id="energyRange" type="range" min="0" max="100" value="50" />
-          </div>
-
-          <div class="intent-grid" id="intentGrid">
-            <button data-intent="calm">落ち着きたい</button>
-            <button data-intent="release">発散したい</button>
-            <button data-intent="think">整理したい</button>
-            <button data-intent="rest">何も考えたくない</button>
-          </div>
-
+          <div class="range-row"><label>ストレス <strong id="stressValue">50</strong></label><input id="stressRange" type="range" min="0" max="100" value="50" /></div>
+          <div class="range-row"><label>エネルギー <strong id="energyValue">50</strong></label><input id="energyRange" type="range" min="0" max="100" value="50" /></div>
+          <div class="intent-grid" id="intentGrid"><button data-intent="calm">落ち着きたい</button><button data-intent="release">発散したい</button><button data-intent="think">整理したい</button><button data-intent="rest">何も考えたくない</button></div>
           <button class="primary full" id="routeButton">今のおすすめを見る</button>
         </article>
-
-        <article class="card recommendation hidden" id="recommendationCard">
-          <p class="eyebrow">今のおすすめ</p>
-          <h2 id="recommendationTitle"></h2>
-          <p id="recommendationReason" class="muted"></p>
-          <button class="primary full" id="recommendationOpen">はじめる</button>
-        </article>
-
-        <article class="card">
-          <div class="row-between">
-            <div>
-              <p class="eyebrow">TODAY</p>
-              <h3>今日は記録しなくてもいい。</h3>
-            </div>
-            <button class="soft" id="skipToday">SKIP</button>
-          </div>
-          <p class="muted small">連続記録は使わない。休んだ日も失敗扱いにしない。</p>
-        </article>
+        <article class="card recommendation hidden" id="recommendationCard"><p class="eyebrow">今のおすすめ</p><h2 id="recommendationTitle"></h2><p id="recommendationReason" class="muted"></p><button class="primary full" id="recommendationOpen">はじめる</button></article>
+        <article class="card"><div class="row-between"><div><p class="eyebrow">TODAY</p><h3>今日は記録しなくてもいい。</h3></div><button class="soft" id="skipToday">SKIP</button></div><p class="muted small">連続記録は使わない。休んだ日も失敗扱いにしない。</p></article>
       </section>
 
       <section class="page" data-page="care">
-        <article class="card">
-          <p class="eyebrow">RESET</p>
-          <h2>60秒だけ呼吸</h2>
-          <div class="breath-orb" id="breathOrb"><span id="breathText">スタート</span></div>
-          <div class="row gap">
-            <button class="primary flex" id="startBreathing">60秒</button>
-            <button class="soft flex" id="stopBreathing">停止</button>
-          </div>
-          <p class="center muted small" id="breathTimer">01:00</p>
-        </article>
-
-        <article class="card">
-          <p class="eyebrow">GROUNDING</p>
-          <h3>今ここに戻る</h3>
-          <div class="step-box" id="groundStep">見えるものを1つ、ゆっくり探してみて。</div>
-          <button class="soft full" id="nextGround">次へ</button>
-        </article>
+        <article class="card"><p class="eyebrow">RESET</p><h2>60秒だけ呼吸</h2><div class="breath-orb" id="breathOrb"><span id="breathText">スタート</span></div><div class="row gap"><button class="primary flex" id="startBreathing">60秒</button><button class="soft flex" id="stopBreathing">停止</button></div><p class="center muted small" id="breathTimer">01:00</p></article>
+        <article class="card"><p class="eyebrow">GROUNDING</p><h3>今ここに戻る</h3><div class="step-box" id="groundStep">見えるものを1つ、ゆっくり探してみて。</div><button class="soft full" id="nextGround">次へ</button></article>
       </section>
 
       <section class="page" data-page="release">
-        <article class="card">
-          <p class="eyebrow">SCRIBBLE CANVAS</p>
-          <h2>ぐちゃぐちゃ描いていい。</h2>
-          <canvas id="scribbleCanvas" width="700" height="360"></canvas>
-          <div class="row gap">
-            <button class="soft flex" id="clearCanvas">消す</button>
-            <button class="primary flex" id="finishRelease">クールダウンへ</button>
-          </div>
+        <article class="card release-intro">
+          <p class="eyebrow">RELEASE SESSION</p><h2>出す → 落ち着く → 確認する</h2><p class="muted small">どれか1つだけでもOK。競争やスコアはつけないよ。</p>
+          <div class="range-row"><label>いまのストレス <strong id="releaseBeforeValue">50</strong></label><input id="releaseBefore" type="range" min="0" max="100" value="50" /></div>
+          <button class="primary full" id="startReleaseSession">この値から始める</button><p class="tiny muted center" id="releaseSessionStatus">先に今のストレスを決めると、あとで変化を見られる。</p>
         </article>
 
-        <article class="card">
-          <p class="eyebrow">WORD DROP</p>
-          <h3>言いたいことを置いていく</h3>
-          <textarea id="releaseText" rows="5" placeholder="きれいな文章じゃなくて大丈夫"></textarea>
-          <button class="danger-soft full" id="burnWords">保存せず消す</button>
-        </article>
+        <article class="card release-tool" data-tool="scribble"><div class="tool-head"><div><p class="eyebrow">SCRIBBLE CANVAS</p><h3>ぐちゃぐちゃ描く</h3></div><span class="tool-chip">描く</span></div><canvas id="scribbleCanvas" width="700" height="360"></canvas><div class="row gap"><button class="soft flex" id="clearCanvas">消す</button><button class="primary flex" id="markScribbleDone">ここまで</button></div></article>
+
+        <article class="card release-tool" data-tool="rhythm"><div class="tool-head"><div><p class="eyebrow">RHYTHM RELEASE</p><h3>好きなリズムを叩く</h3></div><span class="tool-chip">音</span></div><p class="muted small">外部音源なし。端末内で短い音を鳴らすだけ。</p><div class="rhythm-grid" id="rhythmPads"><button data-drum="kick"><strong>KICK</strong><span>低い音</span></button><button data-drum="snare"><strong>SNARE</strong><span>パシッ</span></button><button data-drum="clap"><strong>CLAP</strong><span>クラップ</span></button><button data-drum="tom"><strong>TOM</strong><span>丸い音</span></button></div><div class="row-between mini-stats"><span>タップ <strong id="rhythmCount">0</strong></span><button class="soft compact" id="finishRhythm">ここまで</button></div></article>
+
+        <article class="card release-tool" data-tool="word"><div class="tool-head"><div><p class="eyebrow">WORD DROP</p><h3>言いたいことを流す</h3></div><span class="tool-chip">書く</span></div><textarea id="releaseText" rows="5" placeholder="きれいな文章じゃなくて大丈夫"></textarea><div class="word-stage" id="wordStage" aria-live="polite"></div><button class="danger-soft full" id="burnWords">保存せず、流して消す</button></article>
+
+        <article class="card release-tool" data-tool="shake"><div class="tool-head"><div><p class="eyebrow">SHAKE AWAY</p><h3>スマホを振ってモヤモヤを減らす</h3></div><span class="tool-chip">動き</span></div><p class="muted small">周りにぶつからないよう、端末をしっかり持って軽く振ってね。</p><div class="shake-stage" id="shakeStage"><div class="shake-clouds" id="shakeClouds"></div><strong id="shakeCount">12</strong><span>個のモヤモヤ</span></div><div class="row gap wrap"><button class="primary flex" id="enableShake">センサーを使う</button><button class="soft flex" id="manualShake">タップで1個消す</button></div><p class="tiny muted center" id="shakeStatus">iPhoneではセンサー許可が表示されることがあるよ。</p></article>
+
+        <article class="card release-tool" data-tool="paper"><div class="tool-head"><div><p class="eyebrow">PAPER CRUMPLE</p><h3>書いて、丸めて捨てる</h3></div><span class="tool-chip">演出</span></div><textarea id="paperText" rows="4" placeholder="ここに置いていきたいこと"></textarea><div class="paper-bin-stage"><div class="paper-sheet" id="paperSheet">ここに紙が出るよ</div><div class="bin">⌄<span>BIN</span></div></div><button class="danger-soft full" id="crumplePaper">丸めて捨てる</button></article>
+
+        <article class="card release-tool" data-tool="voice"><div class="tool-head"><div><p class="eyebrow">SOUND RELEASE</p><h3>声量だけ、画面に出す</h3></div><span class="tool-chip">マイク</span></div><p class="muted small">録音・保存はしない。マイク入力の大きさだけをその場で表示する。</p><div class="voice-meter-wrap"><div class="voice-meter"><div id="voiceLevel"></div></div><strong id="voicePercent">0%</strong></div><div class="row gap"><button class="primary flex" id="startVoice">マイク開始</button><button class="soft flex" id="stopVoice">停止</button></div><p class="tiny muted center" id="voiceStatus">GitHub PagesなどHTTPS上で利用できる機能。</p></article>
+
+        <article class="card release-tool" data-tool="move"><div class="tool-head"><div><p class="eyebrow">MOVEMENT BREAK</p><h3>30秒だけ身体をゆるめる</h3></div><span class="tool-chip">身体</span></div><div class="movement-display"><strong id="movementStep">肩を少し上げて、ストンと落とす</strong><span id="movementTimer">00:30</span></div><div class="movement-progress"><div id="movementProgress"></div></div><div class="row gap"><button class="primary flex" id="startMovement">30秒スタート</button><button class="soft flex" id="stopMovement">停止</button></div><p class="tiny muted center">痛み・めまい・不快感があればすぐやめてOK。</p></article>
+
+        <article class="card cooldown-card" id="cooldownGate"><p class="eyebrow">COOL DOWN GATE</p><h2>今、どう？</h2><p class="muted small">発散で終わらせず、最後に少しだけ状態を確認する。</p><div class="used-tools" id="usedTools">まだ使った機能はないよ。</div><div class="range-row"><label>いまのストレス <strong id="releaseAfterValue">50</strong></label><input id="releaseAfter" type="range" min="0" max="100" value="50" /></div><button class="primary full" id="compareRelease">前後を比べる</button><div class="release-result hidden" id="releaseResult"><strong id="releaseDelta">—</strong><span id="releaseResultText"></span></div><div class="cooldown-actions hidden" id="cooldownActions"><button class="primary full" id="cooldownReset">60秒RESETへ</button><button class="soft full" id="cooldownRest">RESTへ</button><button class="soft full" id="finishReleaseSession">今日はここで終わる</button></div></article>
+        <article class="card"><p class="eyebrow">RELEASE HISTORY</p><h3>最近の前後記録</h3><div id="releaseHistory" class="record-list"></div></article>
       </section>
 
       <section class="page" data-page="think">
-        <article class="card">
-          <p class="eyebrow">BRAIN DUMP</p>
-          <h2>頭の中を、一回外に出す。</h2>
-          <textarea id="brainDump" rows="8" placeholder="今考えてることをそのまま書く"></textarea>
-          <div class="row gap">
-            <button class="soft flex" id="saveDump">端末に保存</button>
-            <button class="danger-soft flex" id="deleteDump">削除</button>
-          </div>
-        </article>
-
-        <article class="card">
-          <p class="eyebrow">WORRY BOX</p>
-          <h3>今じゃなくていい心配を預ける</h3>
-          <div class="row gap">
-            <input id="worryInput" class="flex" placeholder="心配ごと" />
-            <button class="primary" id="addWorry">入れる</button>
-          </div>
-          <ul class="simple-list" id="worryList"></ul>
-        </article>
-
-        <article class="card">
-          <p class="eyebrow">CONTROL CIRCLES</p>
-          <h3>これはどこに置けそう？</h3>
-          <div class="three-col">
-            <button class="soft" data-control="変えられる">変えられる</button>
-            <button class="soft" data-control="影響できる">影響できる</button>
-            <button class="soft" data-control="今は変えられない">今は変えられない</button>
-          </div>
-          <p class="muted small center" id="controlResult">選ぶだけでOK。</p>
-        </article>
+        <article class="card"><p class="eyebrow">BRAIN DUMP</p><h2>頭の中を、一回外に出す。</h2><textarea id="brainDump" rows="8" placeholder="今考えてることをそのまま書く"></textarea><div class="row gap"><button class="soft flex" id="saveDump">端末に保存</button><button class="danger-soft flex" id="deleteDump">削除</button></div></article>
+        <article class="card"><p class="eyebrow">WORRY BOX</p><h3>今じゃなくていい心配を預ける</h3><div class="row gap"><input id="worryInput" class="flex" placeholder="心配ごと" /><button class="primary" id="addWorry">入れる</button></div><ul class="simple-list" id="worryList"></ul></article>
+        <article class="card"><p class="eyebrow">CONTROL CIRCLES</p><h3>これはどこに置けそう？</h3><div class="three-col"><button class="soft" data-control="変えられる">変えられる</button><button class="soft" data-control="影響できる">影響できる</button><button class="soft" data-control="今は変えられない">今は変えられない</button></div><p class="muted small center" id="controlResult">選ぶだけでOK。</p></article>
       </section>
 
-      <section class="page" data-page="rest">
-        <article class="card quiet">
-          <p class="eyebrow">NOTHING MODE</p>
-          <h2>今は何もしなくていい。</h2>
-          <p class="muted">画面を見てるだけでも、閉じてもいい。</p>
-          <div class="rest-orb"></div>
-          <div class="row gap">
-            <button class="primary flex rest-start" data-min="5">5分</button>
-            <button class="soft flex rest-start" data-min="15">15分</button>
-            <button class="soft flex rest-start" data-min="0">時間なし</button>
-          </div>
-          <p class="center muted" id="restTimer">—</p>
-        </article>
-      </section>
+      <section class="page" data-page="rest"><article class="card quiet"><p class="eyebrow">NOTHING MODE</p><h2>今は何もしなくていい。</h2><p class="muted">画面を見てるだけでも、閉じてもいい。</p><div class="rest-orb"></div><div class="row gap"><button class="primary flex rest-start" data-min="5">5分</button><button class="soft flex rest-start" data-min="15">15分</button><button class="soft flex rest-start" data-min="0">時間なし</button></div><p class="center muted" id="restTimer">—</p></article></section>
 
       <section class="page" data-page="record">
-        <article class="card">
-          <p class="eyebrow">RECORD</p>
-          <h2>今日を3つだけ記録</h2>
-          <label class="field">気分
-            <select id="recordMood">
-              <option value="good">元気</option>
-              <option value="okay">普通</option>
-              <option value="sad">悲しい</option>
-              <option value="anxious">不安</option>
-              <option value="angry">イライラ</option>
-              <option value="tired">疲れた</option>
-            </select>
-          </label>
-          <label class="field">ストレス
-            <input id="recordStress" type="range" min="0" max="100" value="50" />
-          </label>
-          <label class="field">エネルギー
-            <input id="recordEnergy" type="range" min="0" max="100" value="50" />
-          </label>
-          <button class="primary full" id="saveRecord">保存</button>
-        </article>
-
-        <article class="card">
-          <p class="eyebrow">RECENT</p>
-          <h3>最近の記録</h3>
-          <div id="recordList" class="record-list"></div>
-        </article>
+        <article class="card"><p class="eyebrow">RECORD</p><h2>今日を3つだけ記録</h2><label class="field">気分<select id="recordMood"><option value="good">元気</option><option value="okay">普通</option><option value="sad">悲しい</option><option value="anxious">不安</option><option value="angry">イライラ</option><option value="tired">疲れた</option></select></label><label class="field">ストレス<input id="recordStress" type="range" min="0" max="100" value="50" /></label><label class="field">エネルギー<input id="recordEnergy" type="range" min="0" max="100" value="50" /></label><button class="primary full" id="saveRecord">保存</button></article>
+        <article class="card"><p class="eyebrow">RECENT</p><h3>最近の記録</h3><div id="recordList" class="record-list"></div></article>
       </section>
 
       <section class="page" data-page="guide">
-        <article class="card">
-          <p class="eyebrow">MY MENTAL MANUAL</p>
-          <h2>自分の心の取扱説明書</h2>
-          <label class="field">崩れ始めるサイン
-            <textarea id="manualSigns" rows="3" placeholder="例：夜更かしが増える"></textarea>
-          </label>
-          <label class="field">戻りやすいこと
-            <textarea id="manualCare" rows="3" placeholder="例：音楽、散歩、風呂"></textarea>
-          </label>
-          <label class="field">調子が悪い時に避けたいこと
-            <textarea id="manualAvoid" rows="3" placeholder="例：深夜に重大な決断"></textarea>
-          </label>
-          <label class="field">頼れる人
-            <textarea id="manualPeople" rows="3" placeholder="名前や関係だけでもOK"></textarea>
-          </label>
-          <button class="primary full" id="saveManual">端末に保存</button>
-        </article>
-
-        <article class="card warm">
-          <p class="eyebrow">SAFE SHORTCUT</p>
-          <h3>かなりつらい時</h3>
-          <p class="muted">このサイトだけで抱え込まず、登録した頼れる人や、地域の公的な相談・緊急支援につながれるようにするための場所。</p>
-          <button class="danger-soft full" id="showSafe">SAFE MODEを開く</button>
-        </article>
+        <article class="card"><p class="eyebrow">MY MENTAL MANUAL</p><h2>自分の心の取扱説明書</h2><label class="field">崩れ始めるサイン<textarea id="manualSigns" rows="3" placeholder="例：夜更かしが増える"></textarea></label><label class="field">戻りやすいこと<textarea id="manualCare" rows="3" placeholder="例：音楽、散歩、風呂"></textarea></label><label class="field">調子が悪い時に避けたいこと<textarea id="manualAvoid" rows="3" placeholder="例：深夜に重大な決断"></textarea></label><label class="field">頼れる人<textarea id="manualPeople" rows="3" placeholder="名前や関係だけでもOK"></textarea></label><button class="primary full" id="saveManual">端末に保存</button></article>
+        <article class="card warm"><p class="eyebrow">SAFE SHORTCUT</p><h3>かなりつらい時</h3><p class="muted">このサイトだけで抱え込まず、登録した頼れる人や、地域の公的な相談・緊急支援につながれるようにするための場所。</p><button class="danger-soft full" id="showSafe">SAFE MODEを開く</button></article>
       </section>
 
-      <section class="page safe-page" data-page="safe">
-        <article class="card safe-card">
-          <p class="eyebrow">SAFE MODE</p>
-          <h2>今は、選択肢を減らす。</h2>
-          <p>できそうなものを1つだけでいい。</p>
-          <button class="primary full" data-nav="care">30秒だけ落ち着く</button>
-          <button class="soft full" id="showPeople">頼れる人を見る</button>
-          <div id="peopleBox" class="step-box hidden"></div>
-          <button class="soft full" id="supportInfo">地域の公的な相談先を確認する</button>
-          <p class="muted small">このWebアプリは診断・治療・緊急対応を行うものではありません。差し迫った危険がある場合は、端末から地域の緊急サービスや公的な相談窓口へ直接つながってください。</p>
-        </article>
-      </section>
+      <section class="page safe-page" data-page="safe"><article class="card safe-card"><p class="eyebrow">SAFE MODE</p><h2>今は、選択肢を減らす。</h2><p>できそうなものを1つだけでいい。</p><button class="primary full" data-nav="care">30秒だけ落ち着く</button><button class="soft full" id="showPeople">頼れる人を見る</button><div id="peopleBox" class="step-box hidden"></div><button class="soft full" id="supportInfo">地域の公的な相談先を確認する</button><p class="muted small">このWebアプリは診断・治療・緊急対応を行うものではありません。差し迫った危険がある場合は、端末から地域の緊急サービスや公的な相談窓口へ直接つながってください。</p></article></section>
     </main>
-
-    <nav class="bottom-nav" aria-label="メインナビゲーション">
-      <button data-nav="home" class="active">⌂<span>HOME</span></button>
-      <button data-nav="care">◌<span>CARE</span></button>
-      <button data-nav="release">✦<span>RELEASE</span></button>
-      <button data-nav="think">☁<span>THINK</span></button>
-      <button data-nav="rest">☾<span>REST</span></button>
-      <button data-nav="record">▦<span>RECORD</span></button>
-      <button data-nav="guide">♡<span>GUIDE</span></button>
-    </nav>
+    <nav class="bottom-nav" aria-label="メインナビゲーション"><button data-nav="home" class="active">⌂<span>HOME</span></button><button data-nav="care">◌<span>CARE</span></button><button data-nav="release">✦<span>RELEASE</span></button><button data-nav="think">☁<span>THINK</span></button><button data-nav="rest">☾<span>REST</span></button><button data-nav="record">▦<span>RECORD</span></button><button data-nav="guide">♡<span>GUIDE</span></button></nav>
   </div>
-
   <script src="./app.js"></script>
 </body>
 </html>
