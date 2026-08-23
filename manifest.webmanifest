@@ -1,0 +1,9 @@
+{
+  "name": "Personal Mental OS",
+  "short_name": "Mental OS",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef6f3",
+  "theme_color": "#eaf5f1",
+  "icons": []
+}
