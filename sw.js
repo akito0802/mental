@@ -1,16 +1,16 @@
-const CACHE='mental-os-v8';
+const CACHE='mental-os-v9';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./scribble-crumple.js','./manifest.webmanifest'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{
   const keys=await caches.keys();
-  await Promise.all(keys.map(k=>caches.delete(k)));
+  await Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)));
   await self.clients.claim();
   const clients=await self.clients.matchAll({type:'window'});
   for(const client of clients){
     try{
       const u=new URL(client.url);
-      if(u.origin===self.location.origin && !u.searchParams.has('__mental_v8')){
-        u.searchParams.set('__mental_v8','1');
+      if(u.origin===self.location.origin&&!u.searchParams.has('__mental_v9')){
+        u.searchParams.set('__mental_v9','1');
         client.navigate(u.toString());
       }
     }catch{}
