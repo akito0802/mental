@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#eaf5f1" />
+  <meta name="description" content="AIを使わない、日常のためのセルフケアWebアプリ" />
+  <title>Personal Mental OS</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">PERSONAL MENTAL OS</p>
+        <h1 id="pageTitle">いまの自分を、ちょっと整える。</h1>
+      </div>
+      <button class="icon-button" id="quickExit" aria-label="クイック退出">⌂</button>
+    </header>
+
+    <main id="app">
+      <section class="page active" data-page="home">
+        <article class="hero card">
+          <p class="small muted">診断じゃなくて、今の状態に合う選択を探す場所。</p>
+          <h2>今、どんな感じ？</h2>
+
+          <div class="mood-grid" id="moodGrid">
+            <button data-mood="good">😊<span>元気</span></button>
+            <button data-mood="sad">😢<span>悲しい</span></button>
+            <button data-mood="anxious">😰<span>不安</span></button>
+            <button data-mood="angry">😡<span>イライラ</span></button>
+            <button data-mood="tired">😴<span>疲れた</span></button>
+            <button data-mood="foggy">😶<span>よく分からない</span></button>
+          </div>
+
+          <div class="range-row">
+            <label>ストレス <strong id="stressValue">50</strong></label>
+            <input id="stressRange" type="range" min="0" max="100" value="50" />
+          </div>
+          <div class="range-row">
+            <label>エネルギー <strong id="energyValue">50</strong></label>
+            <input id="energyRange" type="range" min="0" max="100" value="50" />
+          </div>
+
+          <div class="intent-grid" id="intentGrid">
+            <button data-intent="calm">落ち着きたい</button>
+            <button data-intent="release">発散したい</button>
+            <button data-intent="think">整理したい</button>
+            <button data-intent="rest">何も考えたくない</button>
+          </div>
+
+          <button class="primary full" id="routeButton">今のおすすめを見る</button>
+        </article>
+
+        <article class="card recommendation hidden" id="recommendationCard">
+          <p class="eyebrow">今のおすすめ</p>
+          <h2 id="recommendationTitle"></h2>
+          <p id="recommendationReason" class="muted"></p>
+          <button class="primary full" id="recommendationOpen">はじめる</button>
+        </article>
+
+        <article class="card">
+          <div class="row-between">
+            <div>
+              <p class="eyebrow">TODAY</p>
+              <h3>今日は記録しなくてもいい。</h3>
+            </div>
+            <button class="soft" id="skipToday">SKIP</button>
+          </div>
+          <p class="muted small">連続記録は使わない。休んだ日も失敗扱いにしない。</p>
+        </article>
+      </section>
+
+      <section class="page" data-page="care">
+        <article class="card">
+          <p class="eyebrow">RESET</p>
+          <h2>60秒だけ呼吸</h2>
+          <div class="breath-orb" id="breathOrb"><span id="breathText">スタート</span></div>
+          <div class="row gap">
+            <button class="primary flex" id="startBreathing">60秒</button>
+            <button class="soft flex" id="stopBreathing">停止</button>
+          </div>
+          <p class="center muted small" id="breathTimer">01:00</p>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">GROUNDING</p>
+          <h3>今ここに戻る</h3>
+          <div class="step-box" id="groundStep">見えるものを1つ、ゆっくり探してみて。</div>
+          <button class="soft full" id="nextGround">次へ</button>
+        </article>
+      </section>
+
+      <section class="page" data-page="release">
+        <article class="card">
+          <p class="eyebrow">SCRIBBLE CANVAS</p>
+          <h2>ぐちゃぐちゃ描いていい。</h2>
+          <canvas id="scribbleCanvas" width="700" height="360"></canvas>
+          <div class="row gap">
+            <button class="soft flex" id="clearCanvas">消す</button>
+            <button class="primary flex" id="finishRelease">クールダウンへ</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">WORD DROP</p>
+          <h3>言いたいことを置いていく</h3>
+          <textarea id="releaseText" rows="5" placeholder="きれいな文章じゃなくて大丈夫"></textarea>
+          <button class="danger-soft full" id="burnWords">保存せず消す</button>
+        </article>
+      </section>
+
+      <section class="page" data-page="think">
+        <article class="card">
+          <p class="eyebrow">BRAIN DUMP</p>
+          <h2>頭の中を、一回外に出す。</h2>
+          <textarea id="brainDump" rows="8" placeholder="今考えてることをそのまま書く"></textarea>
+          <div class="row gap">
+            <button class="soft flex" id="saveDump">端末に保存</button>
+            <button class="danger-soft flex" id="deleteDump">削除</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">WORRY BOX</p>
+          <h3>今じゃなくていい心配を預ける</h3>
+          <div class="row gap">
+            <input id="worryInput" class="flex" placeholder="心配ごと" />
+            <button class="primary" id="addWorry">入れる</button>
+          </div>
+          <ul class="simple-list" id="worryList"></ul>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">CONTROL CIRCLES</p>
+          <h3>これはどこに置けそう？</h3>
+          <div class="three-col">
+            <button class="soft" data-control="変えられる">変えられる</button>
+            <button class="soft" data-control="影響できる">影響できる</button>
+            <button class="soft" data-control="今は変えられない">今は変えられない</button>
+          </div>
+          <p class="muted small center" id="controlResult">選ぶだけでOK。</p>
+        </article>
+      </section>
+
+      <section class="page" data-page="rest">
+        <article class="card quiet">
+          <p class="eyebrow">NOTHING MODE</p>
+          <h2>今は何もしなくていい。</h2>
+          <p class="muted">画面を見てるだけでも、閉じてもいい。</p>
+          <div class="rest-orb"></div>
+          <div class="row gap">
+            <button class="primary flex rest-start" data-min="5">5分</button>
+            <button class="soft flex rest-start" data-min="15">15分</button>
+            <button class="soft flex rest-start" data-min="0">時間なし</button>
+          </div>
+          <p class="center muted" id="restTimer">—</p>
+        </article>
+      </section>
+
+      <section class="page" data-page="record">
+        <article class="card">
+          <p class="eyebrow">RECORD</p>
+          <h2>今日を3つだけ記録</h2>
+          <label class="field">気分
+            <select id="recordMood">
+              <option value="good">元気</option>
+              <option value="okay">普通</option>
+              <option value="sad">悲しい</option>
+              <option value="anxious">不安</option>
+              <option value="angry">イライラ</option>
+              <option value="tired">疲れた</option>
+            </select>
+          </label>
+          <label class="field">ストレス
+            <input id="recordStress" type="range" min="0" max="100" value="50" />
+          </label>
+          <label class="field">エネルギー
+            <input id="recordEnergy" type="range" min="0" max="100" value="50" />
+          </label>
+          <button class="primary full" id="saveRecord">保存</button>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">RECENT</p>
+          <h3>最近の記録</h3>
+          <div id="recordList" class="record-list"></div>
+        </article>
+      </section>
+
+      <section class="page" data-page="guide">
+        <article class="card">
+          <p class="eyebrow">MY MENTAL MANUAL</p>
+          <h2>自分の心の取扱説明書</h2>
+          <label class="field">崩れ始めるサイン
+            <textarea id="manualSigns" rows="3" placeholder="例：夜更かしが増える"></textarea>
+          </label>
+          <label class="field">戻りやすいこと
+            <textarea id="manualCare" rows="3" placeholder="例：音楽、散歩、風呂"></textarea>
+          </label>
+          <label class="field">調子が悪い時に避けたいこと
+            <textarea id="manualAvoid" rows="3" placeholder="例：深夜に重大な決断"></textarea>
+          </label>
+          <label class="field">頼れる人
+            <textarea id="manualPeople" rows="3" placeholder="名前や関係だけでもOK"></textarea>
+          </label>
+          <button class="primary full" id="saveManual">端末に保存</button>
+        </article>
+
+        <article class="card warm">
+          <p class="eyebrow">SAFE SHORTCUT</p>
+          <h3>かなりつらい時</h3>
+          <p class="muted">このサイトだけで抱え込まず、登録した頼れる人や、地域の公的な相談・緊急支援につながれるようにするための場所。</p>
+          <button class="danger-soft full" id="showSafe">SAFE MODEを開く</button>
+        </article>
+      </section>
+
+      <section class="page safe-page" data-page="safe">
+        <article class="card safe-card">
+          <p class="eyebrow">SAFE MODE</p>
+          <h2>今は、選択肢を減らす。</h2>
+          <p>できそうなものを1つだけでいい。</p>
+          <button class="primary full" data-nav="care">30秒だけ落ち着く</button>
+          <button class="soft full" id="showPeople">頼れる人を見る</button>
+          <div id="peopleBox" class="step-box hidden"></div>
+          <button class="soft full" id="supportInfo">地域の公的な相談先を確認する</button>
+          <p class="muted small">このWebアプリは診断・治療・緊急対応を行うものではありません。差し迫った危険がある場合は、端末から地域の緊急サービスや公的な相談窓口へ直接つながってください。</p>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="メインナビゲーション">
+      <button data-nav="home" class="active">⌂<span>HOME</span></button>
+      <button data-nav="care">◌<span>CARE</span></button>
+      <button data-nav="release">✦<span>RELEASE</span></button>
+      <button data-nav="think">☁<span>THINK</span></button>
+      <button data-nav="rest">☾<span>REST</span></button>
+      <button data-nav="record">▦<span>RECORD</span></button>
+      <button data-nav="guide">♡<span>GUIDE</span></button>
+    </nav>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
