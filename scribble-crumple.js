@@ -4,7 +4,7 @@
   const clearBtn=document.querySelector('#clearCanvas');
   if(!card||!canvas||!clearBtn)return;
 
-  const VERSION='v9';
+  const VERSION='v10';
 
   const style=document.createElement('style');
   style.textContent=`
@@ -123,4 +123,12 @@
       running=false;
     },1050);
   };
+})();
+
+(()=>{
+  if(document.querySelector('script[data-stone-break]'))return;
+  const s=document.createElement('script');
+  s.src='./stone-break.js?v=10';
+  s.dataset.stoneBreak='1';
+  document.body.appendChild(s);
 })();
